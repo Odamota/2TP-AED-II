@@ -9,8 +9,15 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-typedef struct List{
+typedef struct Mytree{
+	int CodCity;
+	char[64] cityName;
+	char[10] cityName;
 
-};
+} CitiesIberia;
+
+char[64] searchCity;
+
+void setWork() {};
 
 void menu();
