@@ -31,7 +31,53 @@
 void menu() {
 	printf("Bem-Vindo ao Interrail Iberia!\n");
 	printf("Escolha uma das seguintes opções:\n");
-	printf("1 -  ")
+	printf("1 - Pesquisar Cidade \n ");
+
+	scanf("%s", searchCity);
+
+	//percorre lista de cidades e apresenta
+
+}
+
+void setWork() 
+{
+	File* fh = fopen("cidadesPT.txt","r");
+
+	if(!fh){
+		printf("Ocorreu um erro ao abrir o ficheiro.\n", );
+	}
+	else
+	{
+		int linecounter = 0;
+
+		while(!feof(fh))
+		{
+			char CityInfo[128];
+			char *aux;
+			fgets(CityInfo, 128, fh);
+
+			char *token;
+			aux = CityInfo;
+
+			int contavirgulas = 0;
+
+			if(!feof(fh))
+			{
+//le linha
+				token =strtok(aux, ",");
+				contavirgulas++;
+				switch(contavirgulas)
+				{
+					case 1:
+					//
+					strcpy()
+				}
+
+
+			}
+		} 
+
+	}
 
 
 }

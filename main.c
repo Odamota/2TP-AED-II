@@ -4,3 +4,11 @@
 #include <unistd.h>
 #include <string.h>
 #include "functions.h"
+
+
+int main() {
+	setWork();
+int option = menu();
+
+
+}
