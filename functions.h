@@ -17,7 +17,7 @@ typedef struct Mytree{
 
 	struct Mytree *left;
 	struct Mytree *right;
-} CitiesIberia;
+} WorldCities;
 
 typedef struct MyList{
 	int CodCityOrigem;
@@ -28,13 +28,22 @@ typedef struct MyList{
 	struct MyList* next;	
 } CitiesPT;
 
-CitiesPT ListadeCidades = NULL;
+CitiesPT * ListadeCidades = NULL;
 
-char[64] searchCity;
+char[64] SearchName;
+
+
+int menuoption = 8;
 
 void setWork() {};
 
 //Insercao à cabeça na Lista
 CitiesPT* insereCidade(CitiesPT* lst, int codOrigin, char[64] OriginName, int codDestiny, char[64] DestinyName);
 
-void menu();
+void ApresentaCidadesPT(CitiesPT * lst);
+
+void searchCity(CitiesPT* lst);
+
+void searchCitiesAvailable(CitiesPT * lst);
+
+int menu();
