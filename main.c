@@ -11,6 +11,14 @@ int main() {
 	setWork();
 
 int option = menu();
+switch option()
+{
+case 1:
+	//opçao 1 do utilizador:
+	//search = getCityname();
+	//
+	break;
 
+}
 
 }

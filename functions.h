@@ -19,19 +19,22 @@ typedef struct Mytree{
 	struct Mytree *right;
 } CitiesIberia;
 
-typedef struct MyTree{
-	int CodCity;
-	char[64] cityName;
-	char[10] cityName;
+typedef struct MyList{
+	int CodCityOrigem;
+	char[64] CityNameOrigem;
+	int CodCityDestino;
+	char[10] CityNameDestino;
 
-
-	struct Mytree *left, *right;
+	struct MyList* next;	
 } CitiesPT;
+
+CitiesPT ListadeCidades = NULL;
 
 char[64] searchCity;
 
 void setWork() {};
 
-CitiesPT *insereCidade( CitiesPT *raiz,  )
+//Insercao à cabeça na Lista
+CitiesPT* insereCidade(CitiesPT* lst, int codOrigin, char[64] OriginName, int codDestiny, char[64] DestinyName);
 
 void menu();

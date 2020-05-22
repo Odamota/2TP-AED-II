@@ -39,6 +39,22 @@ void menu() {
 
 }
 
+//Inserção à cabeça na Lista
+CitiesPT* insereCidade(CitiesPT* lst, int codOrigin, char[64] OriginName, int codDestiny, char[64] DestinyName);
+{
+	CitiesPT* aux = (CitiesPT*)malloc(sizeof(CitiesPT));
+	aux->CodCityOrigem = codOrigin;
+	aux->CityNameOrigem = OriginName;
+	aux->CodCityDestino = codDestiny;
+	aux->CityNameDestino = DestinyName;
+	aux->next = lst;
+
+	//retorna lista já com a nova cidade;
+	return aux;
+
+
+}
+
 void setWork() 
 {
 	File* fh = fopen("cidadesPT.txt","r");
@@ -54,11 +70,14 @@ void setWork()
 		{
 			char CityInfo[128];
 			char *aux;
+			
 			fgets(CityInfo, 128, fh);
-
+			linecounter++;
 			char *token;
 			int  *CityCode = 0;
-			char *cityname
+			char* cityname;
+			int* destinyCode;
+			char* destinyname;
 			aux = CityInfo;
 
 			int contavirgulas = 0;
@@ -67,14 +86,30 @@ void setWork()
 			{
 //le linha
 				token =strtok(aux, ",");
-				contavirgulas++;
-				switch(contavirgulas)
+				while(token != NULL)
 				{
-					case 1:
-					//
-					strcpy()
+					contavirgulas++;
+				
+					switch(contavirgulas)
+					{
+						case 1:
+						//
+							strcpy(CityCode, token);
+							break;
+						case 2:
+							strcpy(cityname, token);
+							break;
+						case 3:
+							strcpy(destinyCode, token);
+							break;
+						case 4:
+							strcpy(destinyname, token);
+					}
+					token = strtok(NULL, "");
 				}
-
+			}
+			if (linecounter > 1)
+			{
 
 			}
 		} 
