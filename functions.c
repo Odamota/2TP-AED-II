@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <stddef.h>
 #include <string.h>
 #include <malloc.h>
 #include "functions.h"
@@ -35,7 +36,7 @@ int menu() {
 	printf("6 - Listar CidadesPT\n ");
     
 	printf("7 - Listar Cidades Mundo\n ");
-	scanf("%s", menuoption);
+	scanf("%d", &menuoption);
 	
 	return menuoption;
 
@@ -45,6 +46,7 @@ int menu() {
 
 
 //Listagem de Cidades 
+
 void ApresentaCidadesPT(CitiesPT* lst)
 {
 	CitiesPT * aux;
@@ -55,13 +57,15 @@ void ApresentaCidadesPT(CitiesPT* lst)
 
 	for (aux = lst; aux; aux= aux->next)
 	{
-		printf("%d\t%c\t%d\t%c\n", aux->CodCityOrigem, aux->CityNameOrigem, aux->CodCityDestino, aux->CityNameDestino);
+		printf("%s\t%s\t%s\t%s\n", aux->CodCityOrigem, aux->CityNameOrigem, aux->CodCityDestino, aux->CityNameDestino);
 	}
 
-	printf("-----------------------------------------")
+	printf("-----------------------------------------");
 }
 
 
+
+/*
 void searchCitiesAvailable(CitiesPT* lst)
 {
 	printf("--------------------------------\n");
@@ -78,14 +82,17 @@ void searchCitiesAvailable(CitiesPT* lst)
 	{
 		if (searchCode == aux->CodCityOrigem)
 		{
-			printf("Disponível viagem de %d para %c, código %d\n", aux->CityNameOrigem, aux->CityNameDestino, aux->CodCityDestino);
+			printf("Disponível viagem de %d para %s, código %d\n", aux->CityNameOrigem, aux->CityNameDestino, aux->CodCityDestino);
 			
 		}
 	}
 
 	printf("Terminou a procura de viagens da cidade com o código %d\n", searchCode);
 }
+*/
 
+
+/*
 void searchCity(CitiesPT* lst)
 {
 	printf("--------------------------------\n");
@@ -93,7 +100,7 @@ void searchCity(CitiesPT* lst)
 	
 	scanf("%s", SearchName);
 
-	printf("Procurando %s na Lista de Cidades Portuguesas...\n");
+	printf("Procurando %s na Lista de Cidades Portuguesas...\n", SearchName);
 
 	CitiesPT* aux; 
 
@@ -104,23 +111,32 @@ void searchCity(CitiesPT* lst)
 		{
 			counter++;
 			printf("\nEncontrada Cidade: \n");
-			printf("%d\t%c\t%d\t%c\n", aux->CodCityOrigem, aux->CityNameOrigem, aux->CodCityDestino, aux->CityNameDestino);
+			printf("%d\t%s\t%d\t%s\n", aux->CodCityOrigem, aux->CityNameOrigem, aux->CodCityDestino, aux->CityNameDestino);
 		}
 	}
 
-	printf("Terminou a procura por %c, com %d resultados", SearchName, counter);
+	printf("Terminou a procura por %s, com %d resultados", SearchName, counter);
 	
 
 }
 
+*/
 
-CitiesPT* insereCidade(CitiesPT* lst, int codOrigin, char[64] OriginName, int codDestiny, char[64] DestinyName)
+
+
+CitiesPT* insereCidade(CitiesPT* lst, int codOrigin, char * OriginName, char * codDestiny, char * DestinyName)
 {
 	CitiesPT* aux = (CitiesPT*)malloc(sizeof(CitiesPT));
-	aux->CodCityOrigem = codOrigin;
+	strcpy( aux->CodCityOrigem, codOrigin );
+	strcpy( aux->CityNameDestino ,DestinyName );
+	strcpy(aux->CityNameOrigem = OriginName);
+	
+	//aux->CodCityOrigem = codOrigin;
 	aux->CityNameOrigem = OriginName;
+//	aux->CityNameDestino = DestinyName;
+	//aux->CityNameOrigem = OriginName;
 	aux->CodCityDestino = codDestiny;
-	aux->CityNameDestino = DestinyName;
+	//aux->CityNameDestino = DestinyName;
 	aux->next = lst;
 
 	//retorna lista já com a nova cidade;
@@ -130,19 +146,20 @@ CitiesPT* insereCidade(CitiesPT* lst, int codOrigin, char[64] OriginName, int co
 }
 
 
+
 //Acede ao ficheiro CidadesPT
 //Guarda as cidades numa Lista Ligada
 void setWork() 
 {
-	File* fh = fopen("cidadesPT.txt","r");
+	FILE * fh = fopen("cidadesPT.txt","r");
 
 	if(!fh){
-		printf("Ocorreu um erro ao abrir o ficheiro.\n", );
+		printf("Ocorreu um erro ao abrir o ficheiro .\n" );
 	}
 	else
 	{
 		int linecounter = 0;
-		citiesPT *CitiesList = NULL; 
+		CitiesPT *CitiesList = NULL; 
 		while(!feof(fh))
 		{
 			char CityInfo[128];
@@ -151,32 +168,31 @@ void setWork()
 			fgets(CityInfo, 128, fh);
 			linecounter++;
 			char *token;
-			int  *CityCode = 0;
-			char* cityname;
-			int* destinyCode;
-			char* destinyname;
+			char * CityCode;
+			char * cityname;
+			char *  destinyCode;
+			char * destinyname;
 			aux = CityInfo;
 
 			int contavirgulas = 0;
 
 			if(!feof(fh))
 			{
-//le linha
+			//le linha
 				token =strtok(aux, ",");
 				while(token != NULL)
 				{
 					contavirgulas++;
-				
 					switch(contavirgulas)
 					{
 						case 1:
-						//
 							strcpy(CityCode, token);
 							break;
 						case 2:
 							strcpy(cityname, token);
 							break;
 						case 3:
+							 
 							strcpy(destinyCode, token);
 							break;
 						case 4:

@@ -9,36 +9,42 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
+
+/*
 typedef struct Mytree{
 	int CodCity;
-	char[64] cityName;
-	char[10] cityName;
+	char cityName[64];
+	char cityName[10];
 
 
 	struct Mytree *left;
 	struct Mytree *right;
-} WorldCities;
+} CitiesTree;
+*/
 
 typedef struct MyList{
-	int CodCityOrigem;
-	char[64] CityNameOrigem;
-	int CodCityDestino;
-	char[10] CityNameDestino;
+	char CodCityOrigem[64];
+	char CityNameOrigem[64];
+	char CodCityDestino[64];
+	char CityNameDestino[64];
 
-	struct MyList* next;	
+	struct MyList* next;
+		
 } CitiesPT;
 
-CitiesPT * ListadeCidades = NULL;
-
-char[64] SearchName;
 
 
-int menuoption = 8;
+CitiesPT * ListadeCidades;
 
-void setWork() {};
+char SearchName[64];
+
+
+int menuoption;
+
+void setWork();
 
 //Insercao à cabeça na Lista
-CitiesPT* insereCidade(CitiesPT* lst, int codOrigin, char[64] OriginName, int codDestiny, char[64] DestinyName);
+CitiesPT* insereCidade(CitiesPT* lst, char* codOrigin, char * OriginName , char * codDestiny, char * DestinyName);
 
 void ApresentaCidadesPT(CitiesPT * lst);
 

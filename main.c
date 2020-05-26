@@ -8,6 +8,7 @@
 
 int main() {
 	printf("A importar o ficheiro de dados para execução...\n");
+
 	setWork();
 	printf("Bem-Vindo ao Interrail Iberia!\n");
 	
@@ -15,16 +16,15 @@ int main() {
 	{
 	   menuoption = menu();
 
-
 	   switch (menuoption)
 	   {
 	   case 1:
-		   searchCity(ListadeCidades);
+		   //searchCity(ListadeCidades);
 		   //percorre lista de cidades e apresenta
 		   break;
 	   case 2:
 		   //pesquisa de cidade por código
-		   searchCitiesAvailable(ListadeCidades);
+		   //searchCitiesAvailable(ListadeCidades);
 		   break;
 	   case 3:
 		   //apresenta cidades c/ + de 50k habitantes com destinos com n_Habitantes>30 000
