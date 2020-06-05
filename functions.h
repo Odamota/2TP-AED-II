@@ -10,46 +10,38 @@
 
 
 
-/*
+
 typedef struct Mytree{
-	int CodCity;
-	char cityName[64];
-	char cityName[10];
-
-
+	char * CodCity;
+	float population;
+	char * cityName;
 	struct Mytree *left;
 	struct Mytree *right;
 } CitiesTree;
-*/
+
 
 typedef struct MyList{
-	char CodCityOrigem[64];
-	char CityNameOrigem[64];
-	char CodCityDestino[64];
-	char CityNameDestino[64];
-
+	char *CodCityOrigem;
+	char *CityNameOrigem;
+	char *CodCityDestino;
+	char *CityNameDestino;
 	struct MyList* next;
-		
 } CitiesPT;
-
-
-
-CitiesPT * ListadeCidades;
-
-char SearchName[64];
 
 
 int menuoption;
 
-void setWork();
+//Funcao que acede ao ficheiro e guarda na lista
+CitiesPT* setWork(CitiesPT * ListadeCidades);
+CitiesTree * getCitiesWorld(CitiesTree * WorldCities);
 
 //Insercao à cabeça na Lista
 CitiesPT* insereCidade(CitiesPT* lst, char* codOrigin, char * OriginName , char * codDestiny, char * DestinyName);
 
 void ApresentaCidadesPT(CitiesPT * lst);
 
-void searchCity(CitiesPT* lst);
+void searchCity(CitiesPT* lst, char* Search);
 
-void searchCitiesAvailable(CitiesPT * lst);
+void searchCitiesAvailable(CitiesPT * lst, char *CodeToSearch);
 
 int menu();
